@@ -1,3 +1,45 @@
-<p>
-  navigation works!
-</p>
+
+<!-- TODO Remove hard coded styles, for demo only -->
+<md-toolbar color="primary">
+  <div class="flex-container" fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
+    <div fxFlex="100" fxFlex.gt-xs="80" fxLayout="row" fxLayoutAlign="space-between center">
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <a routerLink="/">
+          <div>Valuvesting</div>
+        </a>
+        <!-- fxShow.gt-sm isn't working so this is the work around for now -->
+        <div fxHide.xs fxHide.sm>
+          <a routerLink="/">Test</a>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <md-icon>search</md-icon>
+        <md-icon>shopping_cart</md-icon>
+        <md-icon>chat</md-icon>
+        <div style="padding-left:10px;" >|</div>
+        <!-- fxShow.gt-sm isn't working so this is the work around for now -->
+        <div fxHide.xs fxHide.sm fxLayout="row" fxLayoutAlign="space-between center">
+
+          <a routerLink="/">Register</a>
+          <a routerLink="/">Login</a>
+        </div>
+
+        <div fxHide.gt-sm>
+            <button md-icon-button [mdMenuTriggerFor]="appMenu">
+              <md-icon>more_vert</md-icon>
+            </button>
+        </div>
+
+        <!-- this should probably be its own component -->
+        <md-menu #appMenu="mdMenu">
+          <a routerLink="/"><button md-menu-item>
+            <span> Sign up </span>
+          </button></a>
+          <a routerLink="/"><button md-menu-item>
+            <span> Login </span>
+          </button></a>
+        </md-menu>
+      </div>
+    </div>
+  </div>
+</md-toolbar>
