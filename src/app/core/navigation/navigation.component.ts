@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFire } from 'angularfire2';
+
 
 @Component({
   selector: 'app-navigation',
@@ -7,7 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationComponent implements OnInit {
 
-  constructor() { }
+  public displayName;
+
+  constructor(public af: AngularFire) {}
+
+  login() {
+    const promise = this.af.auth.login();
+    promise.then(function(data){
+      console.log(data);
+      this.displayName = data.auth.email;
+    });
+  }
+
+  logout() {
+     this.af.auth.logout();
+  }
 
   ngOnInit() {
   }

@@ -4,8 +4,8 @@
 @include mat-core();
 
 // Define a theme.
-$primary: mat-palette($mat-light-green);
-$accent:  mat-palette($mat-amber, A200, A100, A400);
+$primary: mat-palette($mat-green);
+$accent:  mat-palette($mat-light-green);
 
 $theme: mat-light-theme($primary, $accent);
 
