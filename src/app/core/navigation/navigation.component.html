@@ -11,8 +11,8 @@
       <div fxLayout="row" fxLayoutAlign="space-between center">
         <!-- fxShow.gt-sm isn't working so this is the work around for now -->
         <div fxHide.xs fxHide.sm fxLayout="row" fxLayoutAlign="space-between center">
-          {{ displayName }}
-          <button md-raised-button class="mat-accent" (click)="login()">Login</button>
+          <div *ngIf="user?.auth">{{ user.auth.displayName }}</div>
+          <button *ngIf="!user?.auth" md-raised-button class="mat-accent" (click)="login()">Login</button>
         </div>
 
         <div fxHide.gt-sm>
@@ -24,7 +24,8 @@
         <!-- this should probably be its own component -->
         <md-menu #appMenu="mdMenu">
           <a (click)="login()"><button md-menu-item>
-            <span>Login</span>
+            <span *ngIf="!user?.auth">Login</span>
+            <span *ngIf="user?.auth">{{ user.auth.displayName }}</span>
           </button></a>
         </md-menu>
       </div>
